@@ -104,7 +104,6 @@ const Page: React.FC<pageProps> = ({}) => {
     const combineAllQuantity = cart
       .map((item) => item.quantity)
       .reduce((a, b) => a + b, 0);
-    console.log(combineAllQuantity);
 
     try {
       // stripe data
@@ -164,12 +163,11 @@ const Page: React.FC<pageProps> = ({}) => {
     }
   };
 
-  const price = cart.map((item) => item.price);
-  const combineAllQuantity = cart
-    .map((item) => item.quantity)
-    .reduce((a, b) => a + b, 0);
-  // console.log(combineAllQuantity);
-  const total = price[0] * combineAllQuantity;
+  const quantities = cart.map((item) => item.quantity);
+
+  const totalbeforefixed = quantities.reduce((acc, curr) => acc + curr, 0) * 7.85;
+
+  const total = totalbeforefixed.toFixed(1);
 
   return (
     <>
@@ -440,6 +438,16 @@ const Page: React.FC<pageProps> = ({}) => {
                   className={`${lilita_one.className} text-sm font-medium text-white`}
                 >
                   {total} €
+                </dd>
+              </div>
+              <div className="flex items-center border-t justify-between">
+                <dt className={`${lilita_one.className} mt-4 text-lg text-white`}>
+                  Kostenloser Versand
+                </dt>
+                <dd
+                  className={`${lilita_one.className} mt-4 text-sm font-medium text-white`}
+                >
+                  0€
                 </dd>
               </div>
 

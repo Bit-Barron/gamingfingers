@@ -47,12 +47,8 @@ export const Table = () => {
 
   // Get an array of all quantities
   const quantities = cart.map((item) => item.quantity);
+  const total = quantities.reduce((acc, curr) => acc + curr, 0) * 7.85
 
-  // Calculate the total cost for each item (price * quantity)
-  const itemTotals = cart.map((item, index) => item.price * item.quantity);
-
-  // Calculate the sum of all item totals to get the final total
-  const total = itemTotals.reduce((acc, curr) => acc + curr, 0);
 
   return (
     <div className="flex flex-col container mx-auto">
@@ -108,9 +104,9 @@ export const Table = () => {
                   {cart.map((item) => (
                     <tr key={item.name}>
                       <td
-                        className={`${lilita_one.className} px-6 py-4 whitespace-nowrap text-xl font-medium text-white`}
+                        className={`${lilita_one.className} px-3 py-4 whitespace-nowrap text-xl font-medium text-white`}
                       >
-                        {item.product}
+                        {item.product} x {item.quantity}
                       </td>
                       <td
                         className={`${lilita_one.className} px-6 py-7 flex justify-end items-end whitespace-nowrap text-xl font-medium text-white`}

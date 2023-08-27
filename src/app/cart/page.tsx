@@ -49,17 +49,12 @@ const Page: React.FC<pageProps> = ({}) => {
     getItem();
   }, []);
 
-  // Get an array of all quantities
   const quantities = cart.map((item) => item.quantity);
 
-  // Calculate the total cost for each item (price * quantity)
+  const totalbeforefixed = quantities.reduce((acc, curr) => acc + curr, 0) * 7.85;
 
-  const price = cart.map((item) => item.price);
-  const combineAllQuantity = cart
-    .map((item) => item.quantity)
-    .reduce((a, b) => a + b, 0);
-  // console.log(combineAllQuantity);
-  const total = price[0] * combineAllQuantity;
+  const total = totalbeforefixed.toFixed(1);
+
 
   return (
     <div>

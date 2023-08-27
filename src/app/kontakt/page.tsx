@@ -26,7 +26,6 @@ const Page: React.FC<pageProps> = ({}) => {
       betreff,
       telefon,
     });
-    console.log(res.data);
 
     if (res.status === 200) {
       alert("Ihre Nachricht wurde erfolgreich versendet!");

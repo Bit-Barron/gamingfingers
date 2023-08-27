@@ -94,7 +94,6 @@ const Page: React.FC<pageProps> = ({}) => {
             ...data,
           }
         );
-        console.log(res);
       }
       localStorage.removeItem("customer");
     };
