@@ -23,10 +23,24 @@ const getLocalStorage = () => {
   }
 };
 
+
+const getCart = () => {
+  let item = localStorage.getItem("cart");
+  if (item) {
+    return JSON.parse(localStorage.getItem("cart") || "[]");
+  } else {
+    return [];
+  }
+};
+
+
 const Page: React.FC<pageProps> = ({}) => {
   const router = useRouter();
 
   const [cart, setCart] = useState(getLocalStorage());
+  const [variation, setVariation] = useState(308);
+  const [customer, setCustomer] = useState<any[]>(getCart());
+
 
   useEffect(() => {
     const getItem = () => {
@@ -41,7 +55,30 @@ const Page: React.FC<pageProps> = ({}) => {
   }, [router]);
 
   useEffect(() => {
+    const getItem = () => {
+      if (!localStorage.getItem("cart")) {
+        router.push("/");
+      }
+      const parsedItem = JSON.parse(localStorage.getItem("cart") || "[]");
+
+      setCart(parsedItem);
+    };
+    getItem();
+  }, [router]);
+
+  useEffect(() => {
     const woocomerce = async () => {
+      // console.log(cart)
+      // if (customer.color === "blue") {
+      //   setVariation(306);
+      // } else if (customer.color === "red") {
+      //   setVariation(308);
+      // } else if (customer.color === "purple") {
+      //   setVariation(307);
+      // }
+
+      console.log(variation)
+
       const data = {
         payment_method: "paypal",
         payment_method_title: "paypal",
@@ -75,7 +112,7 @@ const Page: React.FC<pageProps> = ({}) => {
           },
           {
             product_id: 133,
-            variation_id: 308,
+            variation_id: variation,
             quantity: cart.quanity as number,
           },
         ],
@@ -83,28 +120,29 @@ const Page: React.FC<pageProps> = ({}) => {
           {
             method_id: "paypal",
             method_title: "paypal",
-            total: "10.00",
+            total: "0",
           },
         ],
       };
       {
-        const res = await axios.post(
+        await axios.post(
           `https://gamingfingers.de/wp-json/wc/v3/orders?consumer_key=${process.env.CONSUMER_KEY}&consumer_secret=${process.env.CONSUMER_SECRET}`,
           {
             ...data,
           }
         );
       }
-      localStorage.removeItem("customer");
+      // localStorage.removeItem("customer");
     };
     woocomerce();
-  }, [cart.bundesland, cart.email, cart.firstName, cart.lastName, cart.postleitzahl, cart.quanity, cart.region, cart.stadt, cart.straße, cart.telefon]);
+  }, [cart, cart.bundesland, cart.color, cart.email, cart.firstName, cart.lastName, cart.postleitzahl, cart.quanity, cart.region, cart.stadt, cart.straße, cart.telefon, variation]);
   return (
     <div className={`bg-white text-black ${lilita_one.className}`}>
       <Header />
       <div className="flex flex-col items-center justify-center h-screen">
         <h1 className="text-2xl text-center">
-          Sie haben erfolgreich bestellt. Vielen Dank! Ihre Bestellung wird in Kürze bearbeitet.
+          Sie haben erfolgreich bestellt. Vielen Dank! Ihre Bestellung wird in
+          Kürze bearbeitet.
         </h1>
         <button
           className="mt-4 w-96 flex items-center justify-center rounded bg-primary text-white bg-black px-2 py-2 font-bold hover:bg-secondary"

@@ -22,16 +22,18 @@ export const Header: React.FC<HeaderProps> = ({}) => {
   return (
     <div>
       <div className="bg-[#301782]">
-        <div className={`${lilita_one.className} !text-white flex p-2 justify-center items-center text-xl`}>
+        <div
+          className={`${lilita_one.className} !text-white flex p-2 justify-center items-center text-xl`}
+        >
           Kostenloser Versand
         </div>
       </div>
       <div className="bg-black">
         <div className="flex justify-center items-center">
           <Image height={100} src={Logo} alt="Logo" />
-          <div className="absolute top-10 right-0 md:mr-20">
+          <div className="absolute right-0 md:mr-20">
             <AiOutlineShoppingCart
-              className="text-3xl mt-10 !text-white"
+              className="text-3xl mt-10 mr-2 !text-white"
               onClick={() => removeItem()}
             />
           </div>

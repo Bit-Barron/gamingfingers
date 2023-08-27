@@ -51,6 +51,8 @@ const Page: React.FC<pageProps> = ({}) => {
 
   const quantities = cart.map((item) => item.quantity);
 
+  const quanity = quantities.reduce((acc, curr) => acc + curr, 0);
+
   const totalbeforefixed = quantities.reduce((acc, curr) => acc + curr, 0) * 7.85;
 
   const total = totalbeforefixed.toFixed(1);
@@ -96,7 +98,7 @@ const Page: React.FC<pageProps> = ({}) => {
                     <dt
                       className={`${lilita_one.className} text-lg mt-4 text-white`}
                     >
-                      Gaming Finger Sleeves x {quantities.length}
+                      Gaming Finger Sleeves x {quanity}
                     </dt>
                     <dd
                       className={`${lilita_one.className} mt-4 text-sm font-medium text-white`}

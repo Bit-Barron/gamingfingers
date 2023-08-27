@@ -15,8 +15,6 @@ import { MdKeyboardBackspace } from "react-icons/md";
 
 const stripe = require("stripe")(process.env.STRIPE_TOKEN);
 
-
-
 interface pageProps {}
 const lilita_one = Lilita_One({
   subsets: ["latin"],
@@ -165,7 +163,8 @@ const Page: React.FC<pageProps> = ({}) => {
 
   const quantities = cart.map((item) => item.quantity);
 
-  const totalbeforefixed = quantities.reduce((acc, curr) => acc + curr, 0) * 7.85;
+  const totalbeforefixed =
+    quantities.reduce((acc, curr) => acc + curr, 0) * 7.85;
 
   const total = totalbeforefixed.toFixed(1);
 
@@ -441,7 +440,9 @@ const Page: React.FC<pageProps> = ({}) => {
                 </dd>
               </div>
               <div className="flex items-center border-t justify-between">
-                <dt className={`${lilita_one.className} mt-4 text-lg text-white`}>
+                <dt
+                  className={`${lilita_one.className} mt-4 text-lg text-white`}
+                >
                   Kostenloser Versand
                 </dt>
                 <dd

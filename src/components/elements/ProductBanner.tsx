@@ -2,13 +2,9 @@ import { Lilita_One } from "next/font/google";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
-import ProductBlue from "../../../public/images/product_blue.png";
-import ProductPurple from "../../../public/images/product_purple.png";
-import ProductRed from "../../../public/images/product_red.png";
 import fingersleeve1 from "../../../public/images/fingersleeve1.png";
 import fingersleeve2 from "../../../public/images/fingersleeve2.png";
 import product2 from "../../../public/images/product2.png";
-
 
 interface ProductBannerProps {}
 

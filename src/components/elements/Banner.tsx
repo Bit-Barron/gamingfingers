@@ -26,20 +26,20 @@ export const Banner: React.FC<BannerProps> = ({}) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 bg-opacity-60 p-8 md:p-32 flex-col text-white font-bold flex justify-center items-center">
+      <div className="relative z-10 bg-opacity-60 p-4 md:p-12 lg:p-32 flex-col text-white font-bold flex justify-center items-center">
         <h1
-          className={`${lilita_one.className} text-2xl md:text-4xl text-center `}
+          className={`${lilita_one.className} text-3xl md:text-4xl lg:text-5xl text-center text-white mb-2`}
         >
           Play Like a Pro!
         </h1>
 
         <div
-          className={`${lilita_one.className} text-2xl text-center text-white`}
+          className={`${lilita_one.className} md:text-2xl text-xl text-white md:text-white text-center mb-4`}
         >
           Bist du bereit, deine Spielfähigkeiten auf die nächste Stufe zu heben?
         </div>
         <button
-          className={`border-2 rounded-lg p-3 w-52 md:w-52 text-lg md:text-xl mt-4 bg-[#442873] ${lilita_one.className}`}
+          className={`border-2 rounded-lg p-3 md:p-4 w-40 md:w-52 lg:w-64 text-base md:text-lg lg:text-xl mt-4 bg-[#442873] ${lilita_one.className}`}
           onClick={() => router.push("/products")}
         >
           Hier bestellen

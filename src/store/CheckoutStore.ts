@@ -28,52 +28,52 @@ export type CheckoutStore = {
 
 export const checkoutStore = create<CheckoutStore>()(
   immer<CheckoutStore>((set) => ({
-    email: "test@gmail.com",
+    email: "",
     setEmail: (email: string) =>
       set((state) => {
         state.email = email;
       }),
-    firstName: "test",
+    firstName: "",
     setFirstName: (firstName: string) =>
       set((state) => {
         state.firstName = firstName;
       }),
-    lastName: "test",
+    lastName: "",
     setLastName: (lastName: string) =>
       set((state) => {
         state.lastName = lastName;
       }),
-    straße: "test",
+    straße: "",
     setStraße: (straße: string) =>
       set((state) => {
         state.straße = straße;
       }),
-    postleitzahl: "test",
+    postleitzahl: "",
     setPostleitzahl: (postleitzahl: string) =>
       set((state) => {
         state.postleitzahl = postleitzahl;
       }),
-    stadt: "test",
+    stadt: "",
     setStadt: (stadt: string) =>
       set((state) => {
         state.stadt = stadt;
       }),
-    bundesland: "test",
+    bundesland: "",
     setBundesland: (bundesland: string) =>
       set((state) => {
         state.bundesland = bundesland;
       }),
-    notes: "test",
+    notes: "",
     setNotes: (notes: string) =>
       set((state) => {
         state.notes = notes;
       }),
-    region: "test",
+    region: "",
     setRegion: (region: string) =>
       set((state) => {
         state.region = region;
       }),
-    telefon: "test",
+    telefon: "",
     setTelefon: (telefon: string) =>
       set((state) => {
         state.telefon = telefon;

@@ -36,7 +36,7 @@ export default function Home() {
             alt=""
             className="md:w-[450px] lg:h-[330px] w-[340px] md:mt-3"
           />
-          <div className="p-5 md:h-[324px] md:w-[450px]">
+          <div className="p-5 md:h-[324px] md:w-[450px] invisible md:visible">
             <h1
               className={`text-white text-xl md:text-3xl ${lilita_one.className}`}
             >
@@ -55,8 +55,8 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col-reverse md:flex-row justify-center items-center space-y-4 sp mt-8 md:space-x-32 md:mt-10">
-          <div className="p-5 md:h-[324px] md:w-[450px]">
+        <div className="flex flex-col-reverse md:flex-row justify-center items-center space-y-4 sp md:space-x-32 md:mt-10">
+          <div className="p-5 md:h-[324px] md:w-[450px] invisible md:visible">
             <h1
               className={`text-white text-xl md:text-3xl ${lilita_one.className}`}
             >
@@ -84,7 +84,7 @@ export default function Home() {
             className="md:w-[450px] lg:h-[330px] w-[340px] md:mt-3"
           />
         </div>
-        <div className="flex md:mb-16  flex-col justify-center items-center sp mt-8 md:flex-row md:space-x-32 md:mt-10 space-y-4">
+        <div className="flex md:mb-16 flex-col justify-center items-center sp mt-8 md:flex-row md:space-x-32 md:mt-10 space-y-4">
           <Image
             height={400}
             width={400}
@@ -92,7 +92,7 @@ export default function Home() {
             alt=""
             className="md:w-[450px] lg:h-[330px] w-[340px] md:mt-3"
           />
-          <div className="p-5 md:h-[324px] md:w-[450px]">
+          <div className="p-5 md:h-[324px] md:w-[450px] ">
             <h1
               className={`text-white text-2xl md:text-3xl ${lilita_one.className}`}
             >
