@@ -2,26 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-[#1E004D]
+}
+
+::-webkit-scrollbar {
+  @apply h-[20px] w-[2px];
+}
+::-webkit-scrollbar-button {
+  @apply h-0 w-0;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-t from-transparent via-[#6E0DA8] to-transparent;
+}
+::-webkit-scrollbar-thumb:horizontal {
+  @apply bg-gradient-to-l from-transparent via-[#6E0DA8] to-transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb:active {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-track:hover {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-track:active {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-corner {
+  @apply bg-transparent;
 }
