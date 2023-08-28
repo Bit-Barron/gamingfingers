@@ -45,8 +45,8 @@ const Page: React.FC<pageProps> = ({}) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get(
-          `https://gamingfingers.de/wp-json/wc/v3/products?consumer_key=${process.env.CONSUMER_KEY}&consumer_secret=${process.env.CONSUMER_SECRET}`
+        const res = await axios.get(`https://gamingfingers.de/wp-json/wc/v3/products?consumer_key=${process.env.CONSUMER_KEY}&consumer_secret=${process.env.CONSUMER_SECRET}`
+
         );
         setProduct(res.data);
       } catch (error) {

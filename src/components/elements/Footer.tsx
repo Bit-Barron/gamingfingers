@@ -1,4 +1,6 @@
 import { Lilita_One } from "next/font/google";
+import Image from "next/image";
+import logolar from "../../../public/images/logolar.png";
 
 const lilita_one = Lilita_One({
   subsets: ["latin"],
@@ -33,7 +35,9 @@ export const Footer = () => {
               </div>
             ))}
           </nav>
-
+          <div className="mx-auto flex justify-center items-center mt-2">
+            <Image width={120} height={120} src={logolar} alt={""} />
+          </div>
           <p className="mt-5 text-center text-base text-white">
             &copy; 2023 Alle Rechte vorbehalten.
           </p>
