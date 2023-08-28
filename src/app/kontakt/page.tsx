@@ -20,6 +20,10 @@ const Page: React.FC<pageProps> = ({}) => {
   const [telefon, setTelefon] = useState("");
 
   const submit = async () => {
+    if (!nachricht || !email || !betreff) {
+      alert("Bitte füllen Sie alle Felder aus!");
+      return;
+    }
     const res = await axios.post("/api/kontakt", {
       nachricht,
       email,

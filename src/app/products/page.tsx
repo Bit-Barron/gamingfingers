@@ -220,7 +220,7 @@ const Page: React.FC<pageProps> = ({}) => {
           </div>
         </div>
       </div>
-      <div className="md:mt-[250px]">
+      <div className="md:mt-[310px]">
         <Contact />
 
         <Footer />
