@@ -145,6 +145,7 @@ const Page: React.FC<pageProps> = ({}) => {
         telefon: telefon,
         region: region,
         stadt: stadt,
+        paymentMethod: paymentMethod,
         notes: notes,
       };
       localStorage.setItem("customer", JSON.stringify(customer));
@@ -168,7 +169,7 @@ const Page: React.FC<pageProps> = ({}) => {
   return (
     <>
       <Header />
-      <div className="mx-auto container">
+      <div className="mx-auto container !text-white">
         <div>
           <h1
             className={`${lilita_one.className} text-white text-4xl ml-3 mt-4`}
@@ -190,7 +191,7 @@ const Page: React.FC<pageProps> = ({}) => {
             <div className="mb-6 p-2 mt-4">
               <label
                 htmlFor="email"
-                className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                className={`block mb-2 text-lg font-medium !text-white dark:text-white ${lilita_one.className}`}
               >
                 Email address
               </label>
@@ -223,7 +224,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div>
                   <label
                     htmlFor="first_name"
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Vorname *
                   </label>
@@ -240,7 +241,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div>
                   <label
                     htmlFor="last_name"
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Nachname *
                   </label>
@@ -258,7 +259,7 @@ const Page: React.FC<pageProps> = ({}) => {
                   <label
                     htmlFor="Land / Region *
                   "
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Land / Region *
                   </label>
@@ -275,7 +276,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div>
                   <label
                     htmlFor="Address"
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Straße *
                   </label>
@@ -292,7 +293,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div>
                   <label
                     htmlFor="Postleitzahl"
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Postleitzahl *
                   </label>
@@ -309,7 +310,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div>
                   <label
                     htmlFor="Ort / Stadt *"
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Ort / Stadt *
                   </label>
@@ -326,7 +327,7 @@ const Page: React.FC<pageProps> = ({}) => {
                 <div>
                   <label
                     htmlFor="Bundesland / Landkreis "
-                    className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                    className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                   >
                     Bundesland / Landkreis *
                   </label>
@@ -344,7 +345,7 @@ const Page: React.FC<pageProps> = ({}) => {
               <div className="mb-6">
                 <label
                   htmlFor="Telefon"
-                  className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+                  className={`block mb-2 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
                 >
                   Telefon *
                 </label>
@@ -368,7 +369,7 @@ const Page: React.FC<pageProps> = ({}) => {
           <div className="mt-10">
             <label
               htmlFor="message"
-              className={`block mb-2 ml-4 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
+              className={`block mb-2 ml-4 text-lg font-medium text-white dark:text-white ${lilita_one.className}`}
             >
               Notizen (optional)
             </label>
@@ -416,7 +417,7 @@ const Page: React.FC<pageProps> = ({}) => {
         </div>
         <div className="flex items-center mb-4 mt-4">
           <div
-            className={`${lilita_one.className} ml-4 text-sm font-medium text-gray-900 dark:text-gray-300`}
+            className={`${lilita_one.className} ml-4 text-sm font-medium text-white dark:text-gray-300`}
           >
             Indem Sie mit dem Kauf fortfahren, erklären Sie sich mit unseren
             Allgemeinen Geschäftsbedingungen und unserer Datenschutzrichtlinie

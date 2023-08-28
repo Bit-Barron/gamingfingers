@@ -23,7 +23,6 @@ const getLocalStorage = () => {
   }
 };
 
-
 const getCart = () => {
   let item = localStorage.getItem("cart");
   if (item) {
@@ -33,14 +32,32 @@ const getCart = () => {
   }
 };
 
+interface Customer {
+  firstName: string;
+  lastName: string;
+  email: string;
+  straße: string;
+  bundesland: string;
+  postleitzahl: string;
+  telefon: string;
+  region: string;
+  stadt: string;
+  notes?: string;
+  paymentMethod: string;
+}
+
+interface Cart {
+  quantity: number;
+  color: string;
+  price: number;
+  product: string;
+}
 
 const Page: React.FC<pageProps> = ({}) => {
   const router = useRouter();
-
-  const [cart, setCart] = useState(getLocalStorage());
-  const [variation, setVariation] = useState(308);
-  const [customer, setCustomer] = useState<any[]>(getCart());
-
+  const [customer, setCustomer] = useState<Customer>(getLocalStorage());
+  const [cart, setCart] = useState<Cart[]>(getCart());
+  const [variation, setVariation] = useState(1);
 
   useEffect(() => {
     const getItem = () => {
@@ -49,7 +66,7 @@ const Page: React.FC<pageProps> = ({}) => {
       }
       const parsedItem = JSON.parse(localStorage.getItem("customer") || "[]");
 
-      setCart(parsedItem);
+      setCustomer(parsedItem);
     };
     getItem();
   }, [router]);
@@ -66,63 +83,62 @@ const Page: React.FC<pageProps> = ({}) => {
     getItem();
   }, [router]);
 
+  const quantity = cart.map((item) => item.quantity);
+  const totalQuantity = quantity.reduce((a, b) => a + b, 0);
+
   useEffect(() => {
     const woocomerce = async () => {
-      // console.log(cart)
-      // if (customer.color === "blue") {
-      //   setVariation(306);
-      // } else if (customer.color === "red") {
-      //   setVariation(308);
-      // } else if (customer.color === "purple") {
-      //   setVariation(307);
-      // }
-
-      console.log(variation)
-
+      const colorToVariationIdMap = {
+        blue: 306,
+        red: 307,
+        purple: 308,
+      };
+      const lineItems = cart.map((item) => {
+        const variationId =
+          colorToVariationIdMap[
+            item.color as keyof typeof colorToVariationIdMap
+          ];
+        return {
+          product_id: 133,
+          variation_id: variationId,
+          quantity: item.quantity,
+        };
+      });
       const data = {
-        payment_method: "paypal",
-        payment_method_title: "paypal",
+        payment_method: customer.paymentMethod,
+        payment_method_title: `${customer.paymentMethod}`,
         set_paid: true,
         billing: {
-          first_name: `${cart.firstName}`,
-          last_name: `${cart.lastName}`,
-          address_1: `${cart.straße}`,
+          first_name: `${customer.firstName}`,
+          last_name: `${customer.lastName}`,
+          address_1: `${customer.straße}`,
           address_2: "",
-          city: `${cart.stadt}`,
-          state: `${cart.region}`,
-          postcode: `${cart.postleitzahl}`,
-          country: `${cart.bundesland}`,
-          email: `${cart.email}`,
-          phone: `${cart.telefon}`,
+          city: `${customer.stadt}`,
+          state: `${customer.region}`,
+          postcode: `${customer.postleitzahl}`,
+          country: `${customer.bundesland}`,
+          email: `${customer.email}`,
+          phone: `${customer.telefon}`,
         },
         shipping: {
-          first_name: `${cart.firstName}`,
-          last_name: `${cart.lastName}`,
-          address_1: `${cart.straße}`,
+          first_name: `${customer.firstName}`,
+          last_name: `${customer.lastName}`,
+          address_1: `${customer.straße}`,
           address_2: "",
-          city: `${cart.stadt}`,
-          state: `${cart.region}`,
-          postcode: `${cart.postleitzahl}`,
-          country: `${cart.bundesland}`,
+          city: `${customer.stadt}`,
+          state: `${customer.region}`,
+          postcode: `${customer.postleitzahl}`,
+          country: `${customer.bundesland}`,
         },
-        line_items: [
-          {
-            product_id: 133,
-            quantity: cart.quanity as number,
-          },
-          {
-            product_id: 133,
-            variation_id: variation,
-            quantity: cart.quanity as number,
-          },
-        ],
+        line_items: lineItems,
         shipping_lines: [
           {
-            method_id: "paypal",
-            method_title: "paypal",
-            total: "0",
+            method_id: `${customer.paymentMethod}`,
+            method_title: `${customer.paymentMethod}`,
+            total: "7.85",
           },
         ],
+        customer_note: `${customer.notes}`,
       };
       {
         await axios.post(
@@ -132,10 +148,25 @@ const Page: React.FC<pageProps> = ({}) => {
           }
         );
       }
-      // localStorage.removeItem("customer");
+      localStorage.removeItem("customer");
     };
     woocomerce();
-  }, [cart, cart.bundesland, cart.color, cart.email, cart.firstName, cart.lastName, cart.postleitzahl, cart.quanity, cart.region, cart.stadt, cart.straße, cart.telefon, variation]);
+  }, [
+    cart,
+    customer.bundesland,
+    customer.email,
+    customer.firstName,
+    customer.lastName,
+    customer.notes,
+    customer.paymentMethod,
+    customer.postleitzahl,
+    customer.region,
+    customer.stadt,
+    customer.straße,
+    customer.telefon,
+    totalQuantity,
+    variation,
+  ]);
   return (
     <div className={`bg-white text-black ${lilita_one.className}`}>
       <Header />
