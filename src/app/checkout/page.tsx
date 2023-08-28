@@ -38,7 +38,6 @@ const Page: React.FC<pageProps> = ({}) => {
     lastName,
     notes,
     postleitzahl,
-    quantity,
     region,
     setBundesland,
     setEmail,
@@ -46,7 +45,6 @@ const Page: React.FC<pageProps> = ({}) => {
     setLastName,
     setNotes,
     setPostleitzahl,
-    setQuantity,
     setRegion,
     setStadt,
     setStraße,
@@ -86,8 +84,7 @@ const Page: React.FC<pageProps> = ({}) => {
       !bundesland ||
       !telefon ||
       !region ||
-      !stadt ||
-      !notes
+      !stadt
     ) {
       alert("Bitte füllen Sie alle Felder aus!");
       return;
@@ -328,16 +325,16 @@ const Page: React.FC<pageProps> = ({}) => {
                 </div>
                 <div>
                   <label
-                    htmlFor="Bundesland / Landkreis (optional)"
+                    htmlFor="Bundesland / Landkreis "
                     className={`block mb-2 text-lg font-medium text-gray-900 dark:text-white ${lilita_one.className}`}
                   >
-                    Bundesland / Landkreis (optional)
+                    Bundesland / Landkreis *
                   </label>
                   <input
                     onChange={(e) => setBundesland(e.target.value)}
                     value={bundesland}
                     type="text"
-                    id="Bundesland / Landkreis (optional)"
+                    id="Bundesland / Landkreis "
                     className="bg-[#181A1B] border h-14 border-gray-300 text-white text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 0"
                     placeholder="city"
                     required
