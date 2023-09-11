@@ -1,0 +1,22 @@
+app: gamingfingers
+env: hetzner-k3s
+namespace: onkelmo
+values:
+  gitSha: "{{ .SHA }}"
+  gitRepository: Bit-Barron/gamingfingers
+  image:
+    repository: ghcr.io/bit-barron/gamingfingers
+    tag: "{{ .SHA }}"
+  imagePullSecrets:
+    - name: ghcr-login-secret
+  containerPort: 3000
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    host: gaminfginers.barron.app
+    tlsEnabled: true
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.57.0
