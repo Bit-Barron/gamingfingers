@@ -6,6 +6,7 @@ const nextConfig = {
     CONSUMER_SECRET: "cs_bdf157192fabf79150c73daddf867d106db2c13b",
     CONSUMER_KEY: "ck_9296be97c44ed317137dc18944e29f2bfbf74500"
   },
+  output: "standalone",
   images: {
     domains: ["gamingfingers.de", "gamingfingers.com"],
   },
