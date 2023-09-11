@@ -30,7 +30,7 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/bit-barron/maxipflege:${{ github.sha }}
+          tags: ghcr.io/bit-barron/gamingfingers:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
   deploy-production:
