@@ -1,62 +1,27 @@
-# Install dependencies only when needed
-# Stage 0
-FROM node:16-alpine AS deps
-WORKDIR /app
+FROM node:16-alpine AS base
 
+RUN apk update; apk add curl bash
+RUN curl -L https://unpkg.com/@pnpm/self-installer | node
+
+FROM base AS dependencies
+WORKDIR /app
 COPY package.json ./
-RUN yarn install --frozen-lockfile
-#############################################
+RUN pnpm i
 
-
-# Rebuild the source code only when needed
-# Stage 1
-FROM node:16-alpine AS builder
+FROM base AS build
 WORKDIR /app
-
+COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
-COPY --from=deps /app/node_modules ./node_modules
-RUN yarn build
-#############################################
+RUN pnpm run build
 
-
-# Production image, copy only production files
-# Stage 2
-FROM node:16-alpine AS prod
+FROM base
 WORKDIR /app
-
-
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S web -u 1001
-
-COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=web:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-USER web
+COPY --from=build /app/package.json .
+COPY --from=build /app/pnpm-lock.yaml .
+COPY --from=build /app/next.config.js ./
+COPY --from=build /app/public ./public
+COPY --from=build /app/.next/standalone ./
+COPY --from=build /app/.next/static ./.next/static
 EXPOSE 3000
-ENV PORT 3000
-ENV NEXT_TELEMETRY_DISABLED 1
-
-CMD ["yarn", "start"]
-#############################################
-
-# development image, copy all the files and run
-# Stage 3
-FROM node:16-alpine AS dev
-WORKDIR /app
-
-
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S web -u 1001
-
-COPY --from=builder --chown=web:nodejs /app/ ./
-
-USER web
-EXPOSE 3000
-ENV PORT 3000
-ENV NEXT_TELEMETRY_DISABLED 1
-
-CMD ["yarn", "dev"]
-#############################################
+ENV NODE_ENV=production
+CMD [ "node", "server.js" ]
