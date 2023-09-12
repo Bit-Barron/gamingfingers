@@ -30,7 +30,7 @@ export const Banner: React.FC<BannerProps> = ({}) => {
         <h1
           className={`${lilita_one.className} text-3xl md:text-4xl lg:text-5xl text-center text-white mb-2`}
         >
-          Play Like a Pro!
+          Play Like a Pro!!
         </h1>
 
         <div
