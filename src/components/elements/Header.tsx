@@ -30,7 +30,12 @@ export const Header: React.FC<HeaderProps> = ({}) => {
       </div>
       <div className="bg-black">
         <div className="flex justify-center items-center">
-          <Image height={100} src={Logo} alt="Logo" />
+          <Image
+            height={100}
+            src={Logo}
+            alt="Logo"
+            onClick={() => router.push("/")}
+          />
           <div className="absolute right-0 md:mr-20">
             <AiOutlineShoppingCart
               className="text-3xl mt-10 mr-2 !text-white"
