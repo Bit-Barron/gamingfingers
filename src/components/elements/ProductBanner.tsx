@@ -52,7 +52,7 @@ export const ProductBanner: React.FC<ProductBannerProps> = ({}) => {
         <div className="mt-5">
           <button
             className={`border-2 rounded-lg p-3 w-52 md:w-52 text-lg md:text-xl mt-4 text-[#442873] bg-[#B9E9F2] ${lilita_one.className}`}
-            onClick={() => router.push("/products")}
+            onClick={() => alert("for buying go gamingfingers.de")}
           >
             HIER BESTELLEN
           </button>

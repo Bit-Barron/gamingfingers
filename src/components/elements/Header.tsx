@@ -36,17 +36,8 @@ export const Header: React.FC<HeaderProps> = ({}) => {
             alt="Logo"
             onClick={() => router.push("/")}
           />
-          <div className="absolute right-0 md:mr-20">
-            <AiOutlineShoppingCart
-              className="text-3xl mt-10 mr-2 !text-white"
-              onClick={() => removeItem()}
-            />
-          </div>
         </div>
       </div>
     </div>
   );
 };
-
-// bg-[#6E0DA8]
-// bg-[#442873]

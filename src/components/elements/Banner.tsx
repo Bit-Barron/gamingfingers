@@ -40,7 +40,7 @@ export const Banner: React.FC<BannerProps> = ({}) => {
         </div>
         <button
           className={`border-2 rounded-lg p-3 md:p-4 w-40 md:w-52 lg:w-64 text-base md:text-lg lg:text-xl mt-4 bg-[#442873] ${lilita_one.className}`}
-          onClick={() => router.push("/products")}
+          onClick={() => alert("for buying go gamingfingers.de")}
         >
           Hier bestellen
         </button>
