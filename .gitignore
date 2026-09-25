@@ -25,8 +25,9 @@ yarn-debug.log*
 yarn-error.log*
 
 yarn.lock
-# local env files
-.env*.local
+# local environment files (never commit secrets)
+.env*
+!.env.example
 
 # vercel
 .vercel
